@@ -141,17 +141,6 @@ const Chat = () => {
             console.error('Failed to play video:', error);
           });
         }
-        
-        // Don't increment here since we already increment on submit
-        // Just check if we should show popup
-        if (FastfolioTracking.shouldShowPopup()) {
-          setTimeout(() => {
-            setShowFastfolioPopup(true);
-            if (!FastfolioTracking.hasReachedLimit()) {
-              FastfolioTracking.markPopupShown();
-            }
-          }, 2000);
-        }
       }
     },
     onFinish: () => {
@@ -221,25 +210,25 @@ const Chat = () => {
   //@ts-ignore
   const submitQuery = (query) => {
     // Check rate limit before submitting
-    if (FastfolioTracking.hasReachedLimit()) {
-      setHasReachedLimit(true);
-      setShowFastfolioPopup(true);
-      return;
-    }
+    // if (FastfolioTracking.hasReachedLimit()) {
+    //   setHasReachedLimit(true);
+    //   setShowFastfolioPopup(true);
+    //   return;
+    // }
     
     if (!query.trim() || isToolInProgress) return;
     
     // Increment message count
-    FastfolioTracking.incrementMessageCount();
+    // FastfolioTracking.incrementMessageCount();
     
     // Force re-render to update remaining messages counter
     forceUpdate({});
     
     // Check if limit reached after increment
-    if (FastfolioTracking.hasReachedLimit()) {
-      setHasReachedLimit(true);
-      setShowFastfolioPopup(true);
-    }
+    // if (FastfolioTracking.hasReachedLimit()) {
+    //   setHasReachedLimit(true);
+    //   setShowFastfolioPopup(true);
+    // }
     
     setLoadingSubmit(true);
     append({
@@ -257,10 +246,10 @@ const Chat = () => {
     }
 
     // Check rate limit on mount
-    if (FastfolioTracking.hasReachedLimit()) {
-      setHasReachedLimit(true);
-      setShowFastfolioPopup(true);
-    }
+    // if (FastfolioTracking.hasReachedLimit()) {
+    //   setHasReachedLimit(true);
+    //   setShowFastfolioPopup(true);
+    // }
     
     if (initialQuery && !autoSubmitted) {
       setAutoSubmitted(true);
@@ -286,11 +275,11 @@ const Chat = () => {
     e.preventDefault();
     
     // Check rate limit
-    if (FastfolioTracking.hasReachedLimit()) {
-      setHasReachedLimit(true);
-      setShowFastfolioPopup(true);
-      return;
-    }
+    // if (FastfolioTracking.hasReachedLimit()) {
+    //   setHasReachedLimit(true);
+    //   setShowFastfolioPopup(true);
+    //   return;
+    // }
     
     if (!input.trim() || isToolInProgress) return;
     submitQuery(input);
