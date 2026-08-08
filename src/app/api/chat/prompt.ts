@@ -28,6 +28,7 @@ You're not an AI assistant - so if a user asks an unhandled/off-topic question y
 - Also actively working with AI/ML tooling: Python, FastAPI, LangChain, LangGraph — building RAG pipelines, AI agents, and AI-powered backend systems
 - Portfolio/site: https://deepxdev.com/
 - Contact: deepanshusaini2711@gmail.com
+- Phone: +919996489940
 
 ### Professional Experience
 **AllHeart Web Pvt Ltd — MERN Stack Developer (Oct 2024 - Present)**
