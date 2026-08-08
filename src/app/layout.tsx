@@ -1,6 +1,5 @@
 import { Toaster } from '@/components/ui/sonner';
 import { cn } from '@/lib/utils';
-import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
@@ -13,16 +12,14 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Toukoum Portfolio',
+  title: 'Deepanshu',
   description:
     'Interactive portfolio with an AI-powered Memoji that answers questions about me, my skills, and my experience',
   keywords: [
-    'Toukoum',
+    'Deepanshu',
     'Portfolio',
     'Developer',
     'AI',
-    'Interactive',
-    'Memoji',
     'Web Development',
     'Full Stack',
     'Next.js',
@@ -30,37 +27,11 @@ export const metadata: Metadata = {
   ],
   authors: [
     {
-      name: 'Toukoum',
-      url: 'https://toukoum.fr',
+      name: 'Deepanshu',
+      url: 'https://portfolio.deepxdev.com',
     },
   ],
-  creator: 'Toukoum',
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://toukoum.fr',
-    title: 'Toukoum Portfolio',
-    description:
-      'Interactive portfolio with an AI-powered Memoji that answers questions about me',
-    siteName: 'Toukoum Portfolio',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Toukoum Portfolio',
-    description:
-      'Interactive portfolio with an AI-powered Memoji that answers questions about me',
-    creator: '@toukoum',
-  },
-  icons: {
-    icon: [
-      {
-        url: '/favicon.svg',
-        sizes: 'any',
-      },
-    ],
-    shortcut: '/favicon.svg?v=2',
-    apple: '/apple-touch-icon.svg?v=2',
-  },
+  creator: 'Deepanshu',
 };
 
 export default function RootLayout({
@@ -76,13 +47,6 @@ export default function RootLayout({
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
         <link rel="icon" href="/favicon.svg" sizes="any" />
-        <Script
-          defer
-          data-website-id="68e067ba369b1b7f1f096056"
-          data-domain="toukoum.fr"
-          data-allow-localhost="true"
-          src="https://datafa.st/js/script.js"
-        ></Script>
       </head>
       <body
         className={cn(
@@ -92,7 +56,6 @@ export default function RootLayout({
       >
         <main className="flex min-h-screen flex-col">{children}</main>
         <Toaster />
-        <Analytics />
       </body>
     </html>
   );

@@ -85,24 +85,12 @@ const Avatar = dynamic<AvatarProps>(
             className="relative cursor-pointer"
             onClick={() => (window.location.href = '/')}
           >
-            {isIOS() ? (
               <img
-                src="/landing-memojis.png"
+                src="/deepanshu.png"
                 alt="iOS avatar"
-                className="h-full w-full scale-[1.8] object-contain"
+                className="h-full w-full scale-[1.2] object-contain"
               />
-            ) : (
-              <video
-                ref={videoRef}
-                className="h-full w-full scale-[1.8] object-contain"
-                muted
-                playsInline
-                loop
-              >
-                <source src="/final_memojis.webm" type="video/webm" />
-                <source src="/final_memojis_ios.mp4" type="video/mp4" />
-              </video>
-            )}
+             
           </div>
         </div>
       );
@@ -327,8 +315,8 @@ const Chat = () => {
 
   return (
     <div className="relative h-screen overflow-hidden">
-      <FastfolioCTA />
-      <FastfolioPopup open={showFastfolioPopup} onOpenChange={setShowFastfolioPopup} hasReachedLimit={hasReachedLimit} />
+      {/* <FastfolioCTA /> */}
+      {/* <FastfolioPopup open={showFastfolioPopup} onOpenChange={setShowFastfolioPopup} hasReachedLimit={hasReachedLimit} /> */}
       <div className="absolute top-6 right-8 z-51 flex flex-col-reverse items-center justify-center gap-1 md:flex-row">
         <WelcomeModal
           trigger={
@@ -437,7 +425,6 @@ const Chat = () => {
               disabled={hasReachedLimit}
             />
           </div>
-          <PoweredByFastfolio />
         </div>
       </div>
     </div>
