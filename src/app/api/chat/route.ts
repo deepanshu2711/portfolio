@@ -1,4 +1,4 @@
-import { ollama } from 'ollama-ai-provider';
+import { createOpenAI } from '@ai-sdk/openai';
 import { streamText } from 'ai';
 import { SYSTEM_PROMPT } from './prompt';
 import { getContact } from './tools/getContact';
@@ -10,6 +10,11 @@ import { getSkills } from './tools/getSkills';
 import { getSports } from './tools/getSport';
 
 export const maxDuration = 30;
+
+const ollama = createOpenAI({
+  baseURL: 'http://localhost:11434/v1',
+  apiKey: 'ollama', 
+});
 
 // ❌ Pas besoin de l'export ici, Next.js n'aime pas ça
 function errorHandler(error: unknown) {
@@ -29,8 +34,6 @@ export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
     console.log('[CHAT-API] Incoming messages:', messages);
-
-    messages.unshift(SYSTEM_PROMPT);
 
     const tools = {
       getProjects,
