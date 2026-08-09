@@ -35,6 +35,10 @@ export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
     console.log('[CHAT-API] Incoming messages:', messages);
+    console.log(
+  'Gemini API key configured:',
+  Boolean(process.env.GOOGLE_GENERATIVE_AI_API_KEY)
+);
 
     const tools = {
       getProjects,
