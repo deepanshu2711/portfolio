@@ -24,6 +24,7 @@ import {
   Sparkles,
   UserRoundSearch,
   UserSearch,
+  FileText
 } from 'lucide-react';
 import { useState } from 'react';
 import { Drawer } from 'vaul';
@@ -38,7 +39,7 @@ const questions = {
   Me: 'Who are you? I want to know more about you.',
   Projects: 'What are your projects? What are you working on right now?',
   Skills: 'What are your skills? Give me a list of your soft and hard skills.',
-  Fun: "What the craziest thing you've ever done? (mb?) What are your hobbies? ",
+  Resume: 'Can I see your resume? Tell me about your experience, education, and career journey.',
   Contact:
     'How can I reach you? What kind of project would make you say "yes" immediately?',
 };
@@ -47,7 +48,7 @@ const questionConfig = [
   { key: 'Me', color: '#329696', icon: Laugh },
   { key: 'Projects', color: '#3E9858', icon: BriefcaseBusiness },
   { key: 'Skills', color: '#856ED9', icon: Layers },
-  { key: 'Fun', color: '#B95F9D', icon: PartyPopper },
+  { key: 'Resume', color: '#B95F9D', icon: FileText },
   { key: 'Contact', color: '#C19433', icon: UserRoundSearch },
 ];
 
@@ -98,18 +99,6 @@ const questionsByCategory = [
     icon: GraduationCapIcon,
     questions: [
       'What are your skills?',
-      'How was your experience at École 42?',
-    ],
-  },
-  {
-    id: 'fun',
-    name: 'Fun',
-    icon: PartyPopper,
-    questions: [
-      'Mountain Bike you said?? Show me!',
-      "What's the craziest thing you've ever done?",
-      'Mac or PC?',
-      'What are you certain about that 90% get wrong?',
     ],
   },
   {

@@ -12,6 +12,7 @@ import {
   Layers,
   PartyPopper,
   UserRoundSearch,
+  FileText
 } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -22,7 +23,7 @@ const questions = {
   Me: 'Who are you? I want to know more about you.',
   Projects: 'What are your projects? What are you working on right now?',
   Skills: 'What are your skills? Give me a list of your soft and hard skills.',
-  Fun: 'What’s the craziest thing you’ve ever done? What are your hobbies?',
+  Resume: 'Can I see your resume? Tell me about your experience, education, and career journey.',
   Contact: 'How can I contact you?',
 } as const;
 
@@ -30,7 +31,7 @@ const questionConfig = [
   { key: 'Me', color: '#329696', icon: Laugh },
   { key: 'Projects', color: '#3E9858', icon: BriefcaseBusiness },
   { key: 'Skills', color: '#856ED9', icon: Layers },
-  { key: 'Fun', color: '#B95F9D', icon: PartyPopper },
+  { key: 'Resume', color: '#B95F9D', icon: FileText },
   { key: 'Contact', color: '#C19433', icon: UserRoundSearch },
 ] as const;
 

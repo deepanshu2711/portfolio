@@ -64,28 +64,6 @@ export default function ToolRenderer({
                 <Skills />
               </div>
             );
-
-          case 'getSports':
-            return (
-              <div key={toolCallId} className="w-full rounded-lg">
-                <Sports />
-              </div>
-            );
-
-          case 'getCrazy':
-            return (
-              <div key={toolCallId} className="w-full rounded-lg">
-                <Crazy />
-              </div>
-            );
-
-          case 'getInternship':
-            return (
-              <div key={toolCallId} className="w-full rounded-lg">
-                <InternshipCard />
-              </div>
-            );
-
           // Default renderer for other tools
           default:
             return (
