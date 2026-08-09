@@ -1,4 +1,5 @@
-import { createOpenAI } from '@ai-sdk/openai';
+// import { createOpenAI } from '@ai-sdk/openai';
+import { google } from '@ai-sdk/google';
 import { streamText } from 'ai';
 import { SYSTEM_PROMPT } from './prompt';
 import { getContact } from './tools/getContact';
@@ -11,10 +12,10 @@ import { getSports } from './tools/getSport';
 
 export const maxDuration = 30;
 
-const ollama = createOpenAI({
-  baseURL: 'http://localhost:11434/v1',
-  apiKey: 'ollama', 
-});
+// const ollama = createOpenAI({
+//   baseURL: 'http://localhost:11434/v1',
+//   apiKey: 'ollama', 
+// });
 
 // ❌ Pas besoin de l'export ici, Next.js n'aime pas ça
 function errorHandler(error: unknown) {
@@ -46,7 +47,8 @@ export async function POST(req: Request) {
     };
 
     const result = streamText({
-      model: ollama('qwen2.5:3b'),
+      // model: ollama('qwen2.5:3b'),
+      model: google('gemini-2.5-flash'),
       messages,
       toolCallStreaming: true,
       tools,
