@@ -321,7 +321,7 @@ const Chat = () => {
         className="fixed top-0 right-0 left-0 z-50"
         style={{
           background:
-            'linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.95) 30%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 100%)',
+            'linear-gradient(to bottom, var(--background) 0%, color-mix(in oklch, var(--background) 95%, transparent) 30%, color-mix(in oklch, var(--background) 80%, transparent) 50%, transparent 100%)',
         }}
       >
         <div
@@ -401,7 +401,7 @@ const Chat = () => {
         </div>
 
         {/* Fixed Bottom Bar */}
-        <div className="sticky bottom-0 bg-white px-2 pt-3 md:px-0 md:pb-4">
+        <div className="bg-background sticky bottom-0 px-2 pt-3 md:px-0 md:pb-4">
           <div className="relative flex flex-col items-center gap-3">
             <HelperBoost submitQuery={submitQuery} setInput={setInput} hasReachedLimit={hasReachedLimit} />
             <ChatBottombar
