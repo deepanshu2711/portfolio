@@ -42,3 +42,6 @@ CLAUDE.local.md
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# windows download metadata
+*:Zone.Identifier

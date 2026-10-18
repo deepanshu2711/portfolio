@@ -2,10 +2,19 @@ import Image from 'next/image';
 import { Image as Img } from 'lucide-react';
 import { ChevronRight, Link } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
-import { url } from 'inspector';
+
+// Define interface for project prop
+interface ProjectProps {
+  title: string;
+  description?: string;
+  techStack?: string[];
+  date?: string;
+  links?: { name: string; url: string }[];
+  images?: { src: string; alt: string }[];
+}
 
 // Enhanced project content array with all projects
-const PROJECT_CONTENT = [
+const PROJECT_CONTENT: Required<ProjectProps>[] = [
 {
   title: 'AI System Design Consultant',
   description:
@@ -44,15 +53,16 @@ const PROJECT_CONTENT = [
 {
   title: 'AI Notification System',
   description:
-    'A scalable event-driven notification system designed to process and deliver notifications asynchronously. The project focuses on distributed backend architecture, background workers, message queues, retries, and reliable event processing for handling notification workloads at scale.',
+    'A production-ready, multi-tenant AI-powered notification platform that sends Email, SMS, and WhatsApp messages from one unified API (/api/v1/notifications/send). Built as a Turborepo monorepo of microservices (API Gateway, Auth, Management, Template, Notification services and channel-specific workers), with RabbitMQ as the event-driven backbone, gRPC for low-latency internal calls, API-key authentication, delivery tracking (queued, sent, delivered, failed), and a real-time multi-tenant dashboard.',
   techStack: [
+    'Next.js',
     'Node.js',
-    'Express',
-    'Redis',
-    'BullMQ',
-    'Kafka',
-    'PostgreSQL',
+    'MongoDB',
+    'RabbitMQ',
+    'OpenAI',
+    'gRPC',
     'Docker',
+    'Turborepo',
   ],
   date: '2025',
   links: [],
@@ -62,7 +72,7 @@ const PROJECT_CONTENT = [
 {
   title: 'GitIssueHunt',
   description:
-    'A developer-focused platform that helps discover and explore GitHub issues suitable for contribution. The project focuses on building a modern full-stack application with GitHub API integration, filtering, search, and a developer-friendly interface for finding open-source opportunities.',
+    'A platform that helps developers find beginner-friendly open-source issues to contribute to, with GitHub API integration, filtering, and search. Launched on Product Hunt, where it got 11 upvotes and its first active users.',
   techStack: [
     'Next.js',
     'React',
@@ -72,37 +82,27 @@ const PROJECT_CONTENT = [
     'PostgreSQL',
   ],
   date: '2025',
-  links: [],
+  links: [{ name: 'Live', url: 'https://git-issue-hunt.deepxdev.com' }],
   images: [],
 },
 {
   title: 'MyAuth',
   description:
-    'A reusable authentication system built to understand and implement the core concepts behind modern authentication and authorization. The project covers user management, authentication flows, protected resources, sessions, tokens, and backend security.',
+    'A production-ready Auth-as-a-Service platform with a centralized admin dashboard for managing applications, users, and authentication flows. Each app gets its own client_id/client_secret, users sign up and sign in through a hosted portal, and admins can force logout or log a user out of all devices. Redis handles rate limiting, token revocation, and session caching; RabbitMQ publishes user.created / user.updated events; and a Next.js SDK (@myauth/next) makes integration easy. Fully containerized with Docker.',
   techStack: [
+    'Next.js',
     'Node.js',
-    'Express',
-    'TypeScript',
-    'PostgreSQL',
-    'JWT',
-    'Authentication',
-    'Authorization',
+    'MongoDB',
+    'OAuth 2.0',
+    'Redis',
+    'RabbitMQ',
+    'Docker',
   ],
   date: '2025',
   links: [],
   images: [],
 },
 ];
-
-// Define interface for project prop
-interface ProjectProps {
-  title: string;
-  description?: string;
-  techStack?: string[];
-  date?: string;
-  links?: { name: string; url: string }[];
-  images?: { src: string; alt: string }[];
-}
 
 const ProjectContent = ({ project }: { project: ProjectProps }) => {
   // Find the matching project data

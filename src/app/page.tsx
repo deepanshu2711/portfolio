@@ -1,6 +1,5 @@
 'use client';
 
-import { FastfolioCTA } from '@/components/fastfolio-cta';
 import FluidCursor from '@/components/FluidCursor';
 import { Button } from '@/components/ui/button';
 import WelcomeModal from '@/components/welcome-modal';
@@ -16,7 +15,7 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 /* ---------- quick-question data ---------- */
 const questions = {
@@ -61,25 +60,6 @@ export default function Home() {
       transition: { type: 'ease', duration: 0.8, delay: 0.2 },
     },
   };
-
-  useEffect(() => {
-    // Précharger les assets du chat en arrière-plan
-    const img = new window.Image();
-    img.src = '/landing-memojis.png';
-
-    // Précharger les vidéos aussi
-    const linkWebm = document.createElement('link');
-    linkWebm.rel = 'preload'; // Note: prefetch au lieu de preload
-    linkWebm.as = 'video';
-    linkWebm.href = '/final_memojis.webm';
-    document.head.appendChild(linkWebm);
-
-    const linkMp4 = document.createElement('link');
-    linkMp4.rel = 'prefetch';
-    linkMp4.as = 'video';
-    linkMp4.href = '/final_memojis_ios.mp4';
-    document.head.appendChild(linkMp4);
-  }, []);
 
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pb-10 md:pb-20">

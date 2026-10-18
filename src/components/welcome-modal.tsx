@@ -31,13 +31,13 @@ export default function WelcomeModal({ trigger }: WelcomeModalProps) {
       onClick={() => setIsOpen(true)}
     >
       <Image
-        src="/logo-toukoum.svg"
+        src="/deepanshu.png"
         width={100}
         height={100}
-        alt="Logo"
+        alt="Deepanshu"
         className="w-6 md:w-8"
       />
-      <span className="sr-only">About Toukoum</span>
+      <span className="sr-only">About Deepanshu</span>
     </Button>
   );
 

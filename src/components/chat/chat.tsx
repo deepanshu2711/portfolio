@@ -18,9 +18,6 @@ import {
 import WelcomeModal from '@/components/welcome-modal';
 import { Info } from 'lucide-react';
 import HelperBoost from './HelperBoost';
-import { FastfolioCTA } from '@/components/fastfolio-cta';
-import { FastfolioPopup } from '@/components/fastfolio-popup';
-import { PoweredByFastfolio } from '@/components/powered-by-fastfolio';
 import { FastfolioTracking } from '@/lib/fastfolio-tracking';
 
 // ClientOnly component for client-side rendering
@@ -304,8 +301,6 @@ const Chat = () => {
 
   return (
     <div className="relative h-screen overflow-hidden">
-      {/* <FastfolioCTA /> */}
-      {/* <FastfolioPopup open={showFastfolioPopup} onOpenChange={setShowFastfolioPopup} hasReachedLimit={hasReachedLimit} /> */}
       <div className="absolute top-6 right-8 z-51 flex flex-col-reverse items-center justify-center gap-1 md:flex-row">
         <WelcomeModal
           trigger={
