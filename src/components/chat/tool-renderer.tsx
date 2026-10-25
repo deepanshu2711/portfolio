@@ -1,12 +1,9 @@
 // src/components/chat/tool-renderer.tsx
 import { Contact } from '../contact';
-import Crazy from '../crazy';
-import InternshipCard from '../InternshipCard';
 import { Presentation } from '../presentation';
 import AllProjects from '../projects/AllProjects';
 import Resume from '../resume';
 import Skills from '../skills';
-import Sports from '../sport';
 
 interface ToolRendererProps {
   toolInvocations: any[];

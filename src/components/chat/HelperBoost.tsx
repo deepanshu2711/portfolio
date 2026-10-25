@@ -21,8 +21,7 @@ const questions = {
   Projects: 'What are your projects? What are you working on right now?',
   Skills: 'What are your skills? Give me a list of your soft and hard skills.',
   Resume: 'Can I see your resume? Tell me about your experience, education, and career journey.',
-  Contact:
-    'How can I reach you? What kind of project would make you say "yes" immediately?',
+  Contact: 'How can I contact you?',
 };
 
 const questionConfig = [

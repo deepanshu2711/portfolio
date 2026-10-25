@@ -31,13 +31,13 @@ export default function WelcomeModal({ trigger }: WelcomeModalProps) {
       onClick={() => setIsOpen(true)}
     >
       <Image
-        src="/logo-toukoum.svg"
+        src="/favicon.svg"
         width={100}
         height={100}
         alt="Logo"
         className="w-6 md:w-8"
       />
-      <span className="sr-only">About Toukoum</span>
+      <span className="sr-only">About Deepanshu</span>
     </Button>
   );
 
@@ -92,7 +92,7 @@ export default function WelcomeModal({ trigger }: WelcomeModalProps) {
                 {/* What section */}
                 <div className="space-y-3">
                   <h3 className="text-primary flex items-center gap-2 text-xl font-semibold">
-                    What's ????
+                    What's this?
                   </h3>
                   <p className="text-accent-foreground text-base leading-relaxed">
                     I'm so excited to present my{' '}
@@ -105,7 +105,7 @@ export default function WelcomeModal({ trigger }: WelcomeModalProps) {
                 {/* Why section */}
                 <div className="space-y-3">
                   <h3 className="text-primary flex items-center gap-2 text-xl font-semibold">
-                    Why ???
+                    Why?
                   </h3>
                   <p className="text-accent-foreground text-base leading-relaxed">
                     Traditional portfolios can be limiting. <br /> They can't

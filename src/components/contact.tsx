@@ -13,7 +13,7 @@ export function Contact() {
     socials: [
       {
         name: 'LinkedIn',
-        url: 'linkedin.com/in/deepanshu-saini-a6757b213',
+        url: 'https://www.linkedin.com/in/deepanshu-saini-a6757b213',
       },
       {
         name: 'Github',

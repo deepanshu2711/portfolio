@@ -1,97 +1,185 @@
 import Image from 'next/image';
-import { Image as Img } from 'lucide-react';
 import { ChevronRight, Link } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
-import { url } from 'inspector';
 
 // Enhanced project content array with all projects
-const PROJECT_CONTENT = [
-{
-  title: 'AI System Design Consultant',
-  description:
-    'An AI-powered system design consultant that converts natural-language requirements into scalable software architectures. It uses a supervisor-worker multi-agent architecture where specialized agents handle requirements analysis, capacity planning, database design, caching, queues, CDN strategy, and cost estimation before combining everything into a complete architecture document.',
-  techStack: [
-    'Python',
-    'LangChain',
-    'LangGraph',
-    'FastAPI',
-    'Pydantic',
-    'PostgreSQL',
-    'LLMs',
-  ],
-  date: '2026',
-  links: [],
-  images: [],
-},
-
-{
-  title: 'Deep Research Agent',
-  description:
-    'A multi-agent AI research system designed to investigate complex questions by breaking them into smaller tasks, gathering information, evaluating results, and synthesizing the findings into a structured research report. Built with LangGraph to orchestrate the research workflow and manage state between specialized agents.',
-  techStack: [
-    'Python',
-    'LangGraph',
-    'LangChain',
-    'FastAPI',
-    'LLMs',
-    'Multi-Agent Systems',
-    'Web Search',
-  ],
-  date: '2026',
-  links: [],
-  images: [],
-},
-{
-  title: 'AI Notification System',
-  description:
-    'A scalable event-driven notification system designed to process and deliver notifications asynchronously. The project focuses on distributed backend architecture, background workers, message queues, retries, and reliable event processing for handling notification workloads at scale.',
-  techStack: [
-    'Node.js',
-    'Express',
-    'Redis',
-    'BullMQ',
-    'Kafka',
-    'PostgreSQL',
-    'Docker',
-  ],
-  date: '2025',
-  links: [],
-  images: [],
-},
-
-{
-  title: 'GitIssueHunt',
-  description:
-    'A developer-focused platform that helps discover and explore GitHub issues suitable for contribution. The project focuses on building a modern full-stack application with GitHub API integration, filtering, search, and a developer-friendly interface for finding open-source opportunities.',
-  techStack: [
-    'Next.js',
-    'React',
-    'TypeScript',
-    'TailwindCSS',
-    'GitHub API',
-    'PostgreSQL',
-  ],
-  date: '2025',
-  links: [],
-  images: [],
-},
-{
-  title: 'MyAuth',
-  description:
-    'A reusable authentication system built to understand and implement the core concepts behind modern authentication and authorization. The project covers user management, authentication flows, protected resources, sessions, tokens, and backend security.',
-  techStack: [
-    'Node.js',
-    'Express',
-    'TypeScript',
-    'PostgreSQL',
-    'JWT',
-    'Authentication',
-    'Authorization',
-  ],
-  date: '2025',
-  links: [],
-  images: [],
-},
+const PROJECT_CONTENT: Required<ProjectProps>[] = [
+  {
+    title: 'Orchestra',
+    description:
+      'A durable runtime for multi-agent workflows that treats every run like a bank transaction. Each step is written to an append-only event log in Postgres, so a worker crash loses nothing: steps are leased from Redis Streams, and a reaper hands unacknowledged work to another worker. On top of the log it adds human-in-the-loop pauses, deterministic replay at zero model cost, forking a run from any node to compare before/after, parallel branches with deterministic merges, and a budget governor that stops runaway agents (tokens, cost, steps, wall time, loop detection). Currently under active development.',
+    techStack: [
+      'Python',
+      'FastAPI',
+      'PostgreSQL',
+      'Redis Streams',
+      'Event Sourcing',
+      'OpenTelemetry',
+      'Langfuse',
+      'Docker',
+      'Next.js',
+    ],
+    date: '2026',
+    links: [
+      { name: 'GitHub', url: 'https://github.com/deepanshu2711/Orchestra' },
+    ],
+    images: [],
+  },
+  {
+    title: 'Atlas',
+    description:
+      'A multi-tenant retrieval (RAG) service for answering questions over badly structured documents, with clickable citations down to the page, bounding box, and quote. It uses structure-aware ingestion with Docling, contextual chunks, hybrid dense + BM25 retrieval fused with Reciprocal Rank Fusion, cross-encoder reranking, query decomposition, an agentic loop with a hop budget, and citation verification. A built-in eval harness runs a 40-question golden set through the real pipeline: answer accuracy went from 25% on the naive baseline to 55% with Docling + hybrid search + reranking, with retrieval recall@3 of 0.95.',
+    techStack: [
+      'Python',
+      'FastAPI',
+      'PostgreSQL',
+      'pgvector',
+      'Qdrant',
+      'Hybrid Search',
+      'BM25',
+      'Reranking',
+      'Docling',
+      'Ollama',
+      'RAG Evals',
+    ],
+    date: '2026',
+    links: [{ name: 'GitHub', url: 'https://github.com/deepanshu2711/Atlas' }],
+    images: [],
+  },
+  {
+    title: 'Crucible',
+    description:
+      'An evaluation and red-teaming harness for AI agents. Agent evals are not LLM evals, so Crucible runs every case multiple times, reports metrics with bootstrap 95% confidence intervals, flags flaky cases, and compares runs with a verdict per metric: no detectable change, too small to matter, improved, or regressed. Its first target is Atlas, evaluated over HTTP against a golden dataset. Next on the roadmap: OpenTelemetry trajectory metrics (tool choice, step efficiency, stop accuracy), calibrated LLM judges, a CI gate that fails regressing PRs, and an adversarial prompt-injection suite.',
+    techStack: [
+      'Python',
+      'asyncio',
+      'uv',
+      'Bootstrap CIs',
+      'LLM-as-a-Judge',
+      'Agent Evaluation',
+      'Red Teaming',
+      'OpenTelemetry',
+    ],
+    date: '2026',
+    links: [
+      { name: 'GitHub', url: 'https://github.com/deepanshu2711/Crucible' },
+    ],
+    images: [],
+  },
+  {
+    title: 'AI System Design Consultant',
+    description:
+      'An AI-powered system design consultant that turns a prompt like "Design a system like Instagram" into a complete architecture document. A LangGraph supervisor routes a shared design state through specialist agents (requirements, traffic estimation, capacity planning, database, cache, queues, CDN, API design, and microservices), each returning a typed Pydantic artifact. It pauses to ask clarifying questions, then resumes with your answers. Runs fully locally on Ollama, with no API keys required.',
+    techStack: [
+      'Python',
+      'LangChain',
+      'LangGraph',
+      'FastAPI',
+      'Pydantic',
+      'Ollama',
+      'Multi-Agent Systems',
+    ],
+    date: '2026',
+    links: [
+      {
+        name: 'GitHub',
+        url: 'https://github.com/deepanshu2711/AI-System-Design-Consultant',
+      },
+    ],
+    images: [],
+  },
+  {
+    title: 'Deep Research Agent',
+    description:
+      'A self-hosted research agent that investigates complex questions by clarifying scope, writing a research brief, gathering information in a loop, compressing the findings into notes, and synthesizing a structured Markdown report. Inspired by LangChain\'s open_deep_research and rebuilt as a smaller, easier-to-follow LangGraph flow that runs on local models through Ollama, exposed over a FastAPI interface.',
+    techStack: [
+      'Python',
+      'LangGraph',
+      'LangChain',
+      'FastAPI',
+      'Ollama',
+      'LLMs',
+      'AI Agents',
+    ],
+    date: '2026',
+    links: [
+      {
+        name: 'GitHub',
+        url: 'https://github.com/deepanshu2711/open_deep_research',
+      },
+    ],
+    images: [],
+  },
+  {
+    title: 'AI Notification System',
+    description:
+      'A multi-tenant, AI-powered notification platform that sends Email, SMS, and WhatsApp messages from one unified API. Built as a Turborepo monorepo of microservices (API gateway, auth, management, template, and notification services, plus channel workers), with RabbitMQ as the event-driven backbone and gRPC for low-latency internal calls. Includes API key auth, AI-generated templates, and event-based delivery tracking (queued, sent, delivered, failed) in a real-time dashboard.',
+    techStack: [
+      'Node.js',
+      'TypeScript',
+      'Next.js',
+      'MongoDB',
+      'RabbitMQ',
+      'gRPC',
+      'OpenAI',
+      'Docker',
+      'Turborepo',
+    ],
+    date: '2025',
+    links: [
+      {
+        name: 'GitHub',
+        url: 'https://github.com/deepanshu2711/AI-Notification-System',
+      },
+    ],
+    images: [],
+  },
+  {
+    title: 'MyAuth',
+    description:
+      'A self-hostable, open-source Auth-as-a-Service platform for Next.js App Router, built as a backend-first alternative to Clerk and Auth0. It provides cookie-based sessions, short-lived RS256-signed JWTs with refresh-token rotation, Google and GitHub OAuth, passwordless email OTP, and Edge middleware for route protection. Apps are managed from an admin console with per-app client credentials, and developers integrate through the @myauth/next SDK. Uses Redis for rate limiting, token revocation, and session caching, and RabbitMQ for user lifecycle events.',
+    techStack: [
+      'Next.js',
+      'TypeScript',
+      'Node.js',
+      'MongoDB',
+      'Redis',
+      'RabbitMQ',
+      'OAuth 2.0',
+      'JWT',
+      'Docker',
+      'Turborepo',
+    ],
+    date: '2025',
+    links: [
+      { name: 'GitHub', url: 'https://github.com/deepanshu2711/MyAuth' },
+      { name: 'Console', url: 'https://console.deepxdev.com' },
+    ],
+    images: [],
+  },
+  {
+    title: 'GitIssueHunt',
+    description:
+      'A developer-focused platform that helps you discover beginner-friendly GitHub issues ("good first issue" and "help wanted"), filtered by language. Built as a modern full-stack app with GitHub API integration, search, and a developer-friendly interface for finding open-source opportunities. Launched on Product Hunt, where it picked up early active users.',
+    techStack: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'TailwindCSS',
+      'GitHub API',
+      'PostgreSQL',
+      'Turborepo',
+    ],
+    date: '2025',
+    links: [
+      { name: 'Live site', url: 'https://git-issue-hunt.deepxdev.com' },
+      {
+        name: 'GitHub',
+        url: 'https://github.com/deepanshu2711/GitIssueHunt-v2',
+      },
+    ],
+    images: [],
+  },
 ];
 
 // Define interface for project prop
@@ -197,7 +285,25 @@ const ProjectContent = ({ project }: { project: ProjectProps }) => {
 
 // Main data export with updated content
 export const data = [
-  // AI / Agentic AI Projects
+  // AI Systems
+  {
+    category: 'AI Infrastructure',
+    title: 'Orchestra',
+    src: '/orchestra.png',
+    content: <ProjectContent project={{ title: 'Orchestra' }} />,
+  },
+  {
+    category: 'AI Engineering',
+    title: 'Atlas',
+    src: '/atlas.png',
+    content: <ProjectContent project={{ title: 'Atlas' }} />,
+  },
+  {
+    category: 'AI Evaluation',
+    title: 'Crucible',
+    src: '/crucible.png',
+    content: <ProjectContent project={{ title: 'Crucible' }} />,
+  },
   {
     category: 'AI Engineering',
     title: 'AI System Design Consultant',
@@ -210,11 +316,9 @@ export const data = [
     category: 'AI Engineering',
     title: 'Deep Research Agent',
     src: '/deep-research-agent.png',
-    content: (
-      <ProjectContent project={{ title: 'Deep Research Agent' }} />
-    ),
+    content: <ProjectContent project={{ title: 'Deep Research Agent' }} />,
   },
-    // Backend / Distributed Systems
+  // Backend / Distributed Systems
   {
     category: 'Backend Engineering',
     title: 'MyAuth',
@@ -223,11 +327,9 @@ export const data = [
   },
   {
     category: 'Backend Engineering',
-    title: 'Notification System',
+    title: 'AI Notification System',
     src: '/ai-notification.png',
-    content: (
-      <ProjectContent project={{ title: 'AI Notification System' }} />
-    ),
+    content: <ProjectContent project={{ title: 'AI Notification System' }} />,
   },
   {
     category: 'Developer Tool',
@@ -236,4 +338,3 @@ export const data = [
     content: <ProjectContent project={{ title: 'GitIssueHunt' }} />,
   },
 ];
-
